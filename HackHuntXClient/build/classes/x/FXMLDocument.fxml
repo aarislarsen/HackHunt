@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="root_ap" prefHeight="836.0" prefWidth="1303.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="x.FXMLDocumentController">
+   <children>
+      <AnchorPane fx:id="menu_ap" layoutX="380.0" layoutY="196.0" prefHeight="75.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <ImageView fx:id="advisories_button" fitHeight="78.0" fitWidth="37.0" layoutX="14.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/advisories_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="advisory_details_button" fitHeight="78.0" fitWidth="37.0" layoutX="69.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/advisory_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="services_button" fitHeight="78.0" fitWidth="37.0" layoutX="124.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/services_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="exploits_button" fitHeight="78.0" fitWidth="37.0" layoutX="179.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/exploit_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="attack_button" fitHeight="78.0" fitWidth="37.0" layoutX="234.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/attack_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="score_button" fitHeight="78.0" fitWidth="37.0" layoutX="289.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/score_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="active_players_button" fitHeight="78.0" fitWidth="37.0" layoutX="344.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/active_players_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="rankings_button" fitHeight="78.0" fitWidth="37.0" layoutX="399.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/rankings_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="anouncements_button" fitHeight="78.0" fitWidth="37.0" layoutX="454.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/anouncements_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="exit_button" fitHeight="78.0" fitWidth="37.0" layoutX="499.0" layoutY="19.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/exit-icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="spacer_ap" layoutX="380.0" layoutY="271.0" opacity="0.5" prefHeight="20.0" prefWidth="545.0" style="-fx-background-color: gray;" visible="false" />
+      <AnchorPane fx:id="advisories_ap" layoutX="380.0" layoutY="291.0" maxHeight="350.0" maxWidth="545.0" minHeight="350.0" minWidth="545.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <TableView fx:id="advisories_tableview" maxHeight="350.0" maxWidth="545.0" minHeight="350.0" minWidth="545.0" onMouseClicked="#populateAdvisory" prefHeight="350.0" prefWidth="545.0" stylesheets="@../stylesheets/tableview-style.css">
+              <columns>
+                <TableColumn fx:id="ID" minWidth="75.0" prefWidth="75.0" resizable="false" text="ID" />
+                <TableColumn fx:id="Title" minWidth="370.0" prefWidth="370.0" resizable="false" text="Title" />
+                <TableColumn fx:id="Difficulty" minWidth="100.0" prefWidth="100.0" resizable="false" text="Difficulty" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="advisory_ap" layoutX="380.0" layoutY="291.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label fx:id="advisory_id" layoutX="14.0" layoutY="14.0" style="-fx-text-fill: ff890c;" text="ID:" />
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="13.0" layoutY="72.0" prefHeight="175.0" prefWidth="518.0" style="-fx-background-color: transparent;" stylesheets="@../stylesheets/textarea-style.css">
+               <content>
+                  <TextArea fx:id="advisory_description" editable="false" prefHeight="350.0" prefWidth="338.0" style="-fx-background-color: transparent;" stylesheets="@../stylesheets/textarea-style.css" wrapText="true" />
+               </content>
+            </ScrollPane>
+            <Label fx:id="advisory_affected_service" layoutX="191.0" layoutY="33.0" style="-fx-text-fill: ff890c;" text="Affected service:" />
+            <Label fx:id="advisory_difficulty" layoutX="14.0" layoutY="33.0" style="-fx-text-fill: ff890c;" text="Difficulty:" />
+            <Label layoutX="18.0" layoutY="319.0" style="-fx-text-fill: ff890c;" text="Answer:" />
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="79.0" layoutY="250.0" prefHeight="45.0" prefWidth="453.0" style="-fx-background-color: transparent;" stylesheets="@../stylesheets/textarea-style.css">
+               <content>
+                  <TextArea fx:id="advisory_second_tip" editable="false" prefHeight="158.0" prefWidth="448.0" style="-fx-background-color: transparent;" stylesheets="@../stylesheets/textarea-style.css" wrapText="true" />
+               </content>
+            </ScrollPane>
+            <ImageView fx:id="second_tip_button" fitHeight="45.0" fitWidth="56.0" layoutX="22.0" layoutY="250.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/hint_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+            <TextField fx:id="answerField" layoutX="67.0" layoutY="315.0" onAction="#answerAdvisory" prefHeight="25.0" prefWidth="403.0" />
+            <Button fx:id="submit_button" layoutX="479.0" layoutY="315.0" mnemonicParsing="false" onAction="#answerAdvisory" text="Submit" />
+            <Label fx:id="advisory_title" layoutX="191.0" layoutY="14.0" prefHeight="17.0" prefWidth="314.0" style="-fx-text-fill: ff890c;" text="Title:" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="services_ap" layoutX="380.0" layoutY="291.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <TableView fx:id="services_tableview" maxHeight="350.0" maxWidth="545.0" minHeight="350.0" minWidth="545.0" onMouseClicked="#populateAttack" prefHeight="350.0" prefWidth="545.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="service_team" maxWidth="145.0" minWidth="145.0" prefWidth="145.0" resizable="false" text="Team" />
+                  <TableColumn fx:id="service_crypto" maxWidth="80.0" minWidth="80.0" resizable="false" text="Crypto" />
+                  <TableColumn fx:id="service_file" maxWidth="80.0" minWidth="80.0" resizable="false" text="File" />
+                  <TableColumn fx:id="service_storage" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" resizable="false" text="Storage" />
+                  <TableColumn fx:id="service_communication" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Communication" />
+                  <TableColumn fx:id="service_web" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" resizable="false" text="Web" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="exploits_ap" layoutX="380.0" layoutY="291.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <TableView fx:id="exploits_tableview" maxHeight="350.0" maxWidth="545.0" minHeight="300.0" minWidth="545.0" onMouseClicked="#pickCVE" prefHeight="318.0" prefWidth="545.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="CVE" minWidth="175.0" prefWidth="175.0" resizable="false" text="CVE" />
+                  <TableColumn fx:id="Status" minWidth="370.0" prefWidth="370.0" resizable="false" text="Status" />
+               </columns>
+            </TableView>
+            <Label fx:id="exploits_cve" layoutX="9.0" layoutY="325.0" style="-fx-text-fill: ff890c;" text="Advisory:" />
+            <MenuButton fx:id="exploits_generate_button" contentDisplay="TOP" layoutX="464.0" layoutY="321.0" mnemonicParsing="false" popupSide="TOP" stylesheets="@../stylesheets/button-style.css" text="Generate">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="attack_ap" layoutX="381.0" layoutY="291.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label layoutX="20.0" layoutY="18.0" text="Target team:" textFill="#ff890c" />
+            <Label fx:id="attack_target_team" layoutX="122.0" layoutY="18.0" textFill="#ff890c" />
+            <Label layoutX="20.0" layoutY="35.0" text="Target service:" textFill="#ff890c" />
+            <Label fx:id="attack_target_service" layoutX="122.0" layoutY="35.0" textFill="#ff890c" />
+            <TableView fx:id="attack_unpatched_vulns" layoutX="21.0" layoutY="62.0" maxHeight="350.0" maxWidth="150.0" minHeight="113.0" minWidth="150.0" onMouseClicked="#selectVuln" prefHeight="175.0" prefWidth="150.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="attack_unpatched_vulns_column" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="Unpatched vulnerabilities" />
+               </columns>
+            </TableView>
+            <TableView fx:id="attack_vulnerable_members" layoutX="198.0" layoutY="62.0" maxHeight="350.0" maxWidth="150.0" minHeight="113.0" minWidth="150.0" onMouseClicked="#selectMember" prefHeight="175.0" prefWidth="150.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="attack_vulnerable_members_column" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="Vulnerable teammembers" />
+               </columns>
+            </TableView>
+            <TextField fx:id="attack_statusfield" layoutX="10.0" layoutY="309.0" prefHeight="27.0" prefWidth="518.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <ImageView fx:id="attack_attack" fitHeight="68.0" fitWidth="76.0" layoutX="404.0" layoutY="141.0" onMousePressed="#attack" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/attack_icon_red.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.36" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="attack_rescan" disable="true" fitHeight="78.0" fitWidth="37.0" layoutX="224.0" layoutY="260.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../graphics/attack_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <Label layoutX="209.0" layoutY="18.0" text="Target vulnerability:" textFill="#ff890c" />
+            <Label layoutX="209.0" layoutY="35.0" text="Target member" textFill="#ff890c" />
+            <Label fx:id="attack_target_vuln" layoutX="332.0" layoutY="18.0" textFill="#ff890c" />
+            <Label fx:id="attack_target_member" layoutX="332.0" layoutY="35.0" textFill="#ff890c" />
+            <ImageView fx:id="attack_attack_green" fitHeight="68.0" fitWidth="76.0" layoutX="404.0" layoutY="141.0" onMousePressed="#attack" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../graphics/attack_icon_green.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.36" />
+               </effect>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="score_ap" layoutX="380.0" layoutY="291.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label layoutX="93.0" layoutY="58.0" style="-fx-text-fill: ff890c;" text="Individual score">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="368.0" layoutY="58.0" style="-fx-text-fill: ff890c;" text="Team score">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="score_team_prestige" contentDisplay="CENTER" layoutX="323.0" layoutY="107.0" text="1985" textAlignment="CENTER" textFill="#fffbfb">
+               <font>
+                  <Font name="Lucida Console" size="64.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Label>
+            <Label fx:id="score_team_credit" alignment="CENTER" contentDisplay="CENTER" layoutX="323.0" layoutY="175.0" prefHeight="68.0" prefWidth="151.0" text="87" textAlignment="CENTER" textFill="#fffbfb">
+               <font>
+                  <Font name="Lucida Console" size="64.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Label>
+            <Label fx:id="score_individual_prestige" contentDisplay="CENTER" layoutX="61.0" layoutY="107.0" text="2145" textAlignment="CENTER" textFill="#fffbfb">
+               <font>
+                  <Font name="Lucida Console" size="64.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Label>
+            <Label fx:id="score_individual_credit" alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="175.0" prefHeight="68.0" prefWidth="151.0" text="34" textAlignment="CENTER" textFill="#fffbfb">
+               <font>
+                  <Font name="Lucida Console" size="64.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="activeplayers_ap" layoutX="380.0" layoutY="291.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <TableView fx:id="activeplayers_tableview" maxHeight="350.0" maxWidth="545.0" minHeight="350.0" minWidth="545.0" prefHeight="350.0" prefWidth="545.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="Username" editable="false" minWidth="175.0" prefWidth="175.0" resizable="false" text="Username" />
+                  <TableColumn fx:id="Teamname" editable="false" minWidth="370.0" prefWidth="370.0" resizable="false" text="Teamname" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="rankings_ap" layoutX="380.0" layoutY="291.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <TableView fx:id="rankings_tableview" maxHeight="350.0" maxWidth="545.0" minHeight="350.0" minWidth="545.0" prefHeight="350.0" prefWidth="545.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="Rank" minWidth="75.0" prefWidth="75.0" resizable="false" text="Rank" />
+                  <TableColumn fx:id="Rank_Teamname" minWidth="370.0" prefWidth="370.0" resizable="false" text="Teamname" />
+                  <TableColumn fx:id="Prestige" minWidth="100.0" prefWidth="100.0" resizable="false" text="Prestige" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anouncements_ap" layoutX="380.0" layoutY="291.0" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="350.0" prefWidth="545.0" style="-fx-background-color: transparent;" stylesheets="@../stylesheets/textarea-style.css">
+               <content>
+                  <TextArea fx:id="announcements_textarea" editable="false" prefHeight="350.0" prefWidth="542.0" style="-fx-background-color: transparent;" stylesheets="@../stylesheets/textarea-style.css" text="Bacon ipsum dolor amet beef ribs bresaola rump, turkey prosciutto short loin corned beef pork loin flank fatback tenderloin biltong beef. Ground round picanha jerky pork belly leberkas shank. Alcatra prosciutto shankle sirloin cow. Tongue ground round pastrami, kielbasa hamburger fatback rump swine drumstick meatloaf shank picanha tail. Landjaeger chuck corned beef shoulder andouille buffalo, frankfurter pork chop ham hock fatback venison hamburger turkey picanha.Bacon ipsum dolor amet beef ribs bresaola rump, turkey prosciutto short loin corned beef pork loin flank fatback tenderloin biltong beef. Ground round picanha jerky pork belly leberkas shank. Alcatra prosciutto shankle sirloin cow. Tongue ground round pastrami, kielbasa hamburger fatback rump swine drumstick meatloaf shank picanha tail. Landjaeger chuck corned beef shoulder andouille buffalo, frankfurter pork chop ham hock fatback venison hamburger turkey picanha.Bacon ipsum dolor amet beef ribs bresaola rump, turkey prosciutto short loin corned beef pork loin flank fatback tenderloin biltong beef. Ground round picanha jerky pork belly leberkas shank. Alcatra prosciutto shankle sirloin cow. Tongue ground round pastrami, kielbasa hamburger fatback rump swine drumstick meatloaf shank picanha tail. Landjaeger chuck corned beef shoulder andouille buffalo, frankfurter pork chop ham hock fatback venison hamburger turkey picanha.Bacon ipsum dolor amet beef ribs bresaola rump, turkey prosciutto short loin corned beef pork loin flank fatback tenderloin biltong beef. Ground round picanha jerky pork belly leberkas shank. Alcatra prosciutto shankle sirloin cow. Tongue ground round pastrami, kielbasa hamburger fatback rump swine drumstick meatloaf shank picanha tail. Landjaeger chuck corned beef shoulder andouille buffalo, frankfurter pork chop ham hock fatback venison hamburger turkey picanha.Bacon ipsum dolor amet beef ribs bresaola rump, turkey prosciutto short loin corned beef pork loin flank fatback tenderloin biltong beef. Ground round picanha jerky pork belly leberkas shank. Alcatra prosciutto shankle sirloin cow. Tongue ground round pastrami, kielbasa hamburger fatback rump swine drumstick meatloaf shank picanha tail. Landjaeger chuck corned beef shoulder andouille buffalo, frankfurter pork chop ham hock fatback venison hamburger turkey picanha.Bacon ipsum dolor amet beef ribs bresaola rump, turkey prosciutto short loin corned beef pork loin flank fatback tenderloin biltong beef. Ground round picanha jerky pork belly leberkas shank. Alcatra prosciutto shankle sirloin cow. Tongue ground round pastrami, kielbasa hamburger fatback rump swine drumstick meatloaf shank picanha tail. Landjaeger chuck corned beef shoulder andouille buffalo, frankfurter pork chop ham hock fatback venison hamburger turkey picanha.Bacon ipsum dolor amet beef ribs bresaola rump, turkey prosciutto short loin corned beef pork loin flank fatback tenderloin biltong beef. Ground round picanha jerky pork belly leberkas shank. Alcatra prosciutto shankle sirloin cow. Tongue ground round pastrami, kielbasa hamburger fatback rump swine drumstick meatloaf shank picanha tail. Landjaeger chuck corned beef shoulder andouille buffalo, frankfurter pork chop ham hock fatback venison hamburger turkey picanha.Bacon ipsum dolor amet beef ribs bresaola rump, turkey prosciutto short loin corned beef pork loin flank fatback tenderloin biltong beef. Ground round picanha jerky pork belly leberkas shank. Alcatra prosciutto shankle sirloin cow. Tongue ground round pastrami, kielbasa hamburger fatback rump swine drumstick meatloaf shank picanha tail. Landjaeger chuck corned beef shoulder andouille buffalo, frankfurter pork chop ham hock fatback venison hamburger turkey picanha." wrapText="true" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="login_ap" layoutX="530.0" layoutY="268.0" prefHeight="300.0" prefWidth="244.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label layoutX="17.0" layoutY="166.0" text="Username:" textFill="#ff890c" />
+            <Label layoutX="17.0" layoutY="196.0" text="Password" textFill="#ff890c" />
+            <TextField fx:id="login_username" layoutX="80.0" layoutY="162.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <TextField fx:id="login_password" layoutX="80.0" layoutY="192.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <ImageView fitHeight="103.0" fitWidth="215.0" layoutX="71.0" layoutY="33.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/avatar.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.81" />
+               </effect>
+            </ImageView>
+            <Hyperlink fx:id="loginRegisterLink" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="263.0" prefHeight="23.0" prefWidth="218.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Don't have an account yet?" textAlignment="CENTER" />
+            <Hyperlink fx:id="login_link" layoutX="93.0" layoutY="229.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Login" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="create_ap" layoutX="531.0" layoutY="268.0" prefHeight="300.0" prefWidth="244.0" style="-fx-background-color: #3d4956;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label layoutX="17.0" layoutY="166.0" text="Username:" textFill="#ff890c" />
+            <Label layoutX="17.0" layoutY="196.0" text="Password" textFill="#ff890c" />
+            <Label layoutX="17.0" layoutY="227.0" text="Teamname" textFill="#ff890c" />
+            <TextField fx:id="create_username" layoutX="80.0" layoutY="162.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <TextField fx:id="create_password" layoutX="80.0" layoutY="192.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <TextField fx:id="create_teamname" layoutX="80.0" layoutY="222.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <ImageView fitHeight="103.0" fitWidth="215.0" layoutX="71.0" layoutY="33.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/avatar.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.81" />
+               </effect>
+            </ImageView>
+            <Hyperlink fx:id="create_link" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="263.0" prefHeight="23.0" prefWidth="218.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Create user" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
