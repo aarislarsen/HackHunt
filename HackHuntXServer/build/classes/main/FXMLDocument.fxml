@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="root_ap" prefHeight="640.0" prefWidth="800.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLDocumentController">
+   <children>
+      <AnchorPane fx:id="menu_ap" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <ImageView fx:id="advisories_button" fitHeight="50.0" fitWidth="50.0" layoutX="23.0" layoutY="25.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/advisories_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="players_button" fitHeight="50.0" fitWidth="50.0" layoutX="109.0" layoutY="25.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/active_players_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="answers_button" fitHeight="50.0" fitWidth="50.0" layoutX="186.0" layoutY="25.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/hint_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="scores_button" fitHeight="50.0" fitWidth="50.0" layoutX="267.0" layoutY="25.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/rankings_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="announcements_button" fitHeight="50.0" fitWidth="50.0" layoutX="350.0" layoutY="25.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/anouncements_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="services_button" fitHeight="50.0" fitWidth="50.0" layoutX="437.0" layoutY="25.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/services_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="exploits_button" fitHeight="50.0" fitWidth="50.0" layoutX="521.0" layoutY="22.0" onMousePressed="#handleImageViewClickAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/exploit_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="726.0" layoutY="22.0" onMousePressed="#handleImageViewClickAction" onMouseReleased="#exit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../graphics/exit-icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.8" />
+               </effect>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="spacer_ap" layoutY="100.0" opacity="0.5" prefHeight="20.0" prefWidth="800.0" style="-fx-background-color: gray;" />
+      <AnchorPane fx:id="advisories_ap" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <Hyperlink fx:id="start_sending_hyperlink" layoutX="14.0" layoutY="14.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Start sending advisories" />
+            <Hyperlink fx:id="reset_advisories_hyperlink" layoutX="219.0" layoutY="14.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Reset advisories" />
+            <TableView fx:id="advisories_tableview" layoutX="386.0" layoutY="14.0" onMouseClicked="#pickAdvisory" prefHeight="476.0" prefWidth="400.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="advisories_id" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="ID" />
+                  <TableColumn fx:id="advisories_title" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Title" />
+                  <TableColumn fx:id="advisories_released" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Released" />
+                  <TableColumn fx:id="advisories_answered" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Answered" />
+               </columns>
+            </TableView>
+            <Hyperlink fx:id="edit_advisory_hyperlink" layoutX="14.0" layoutY="464.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Edit" />
+            <Hyperlink fx:id="save_advisory_hyperlink" layoutX="85.0" layoutY="464.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Save" />
+            <TextField fx:id="advisory_id" editable="false" layoutX="31.0" layoutY="56.0" prefHeight="27.0" prefWidth="50.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Label layoutX="14.0" layoutY="61.0" text="ID" textFill="#ff890c" />
+            <TextField fx:id="advisory_title" editable="false" layoutX="126.0" layoutY="56.0" prefHeight="27.0" prefWidth="247.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Label layoutX="89.0" layoutY="61.0" text="Title:" textFill="#ff890c" />
+            <TextField fx:id="advisory_difficulty" editable="false" layoutX="84.0" layoutY="87.0" prefHeight="27.0" prefWidth="78.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Label layoutX="11.0" layoutY="92.0" text="Difficulty:" textFill="#ff890c" />
+            <TextField fx:id="advisory_service" editable="false" layoutX="272.0" layoutY="87.0" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Label layoutX="175.0" layoutY="92.0" text="Affected service:" textFill="#ff890c" />
+            <Label layoutX="12.0" layoutY="116.0" text="Description:" textFill="#ff890c" />
+            <Label layoutX="15.0" layoutY="182.0" text="Challenge:" textFill="#ff890c" />
+            <Label layoutX="14.0" layoutY="283.0" text="Hint:" textFill="#ff890c" />
+            <Label layoutX="14.0" layoutY="334.0" text="Second hint" textFill="#ff890c" />
+            <TextField fx:id="advisory_uri" editable="false" layoutX="102.0" layoutY="248.0" prefHeight="27.0" prefWidth="271.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Label layoutX="14.0" layoutY="253.0" text="Challenge URI:" textFill="#ff890c" />
+            <TextField fx:id="advisory_answer" editable="false" layoutX="82.0" layoutY="385.0" prefHeight="27.0" prefWidth="291.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Label layoutX="14.0" layoutY="390.0" text="Answer:" textFill="#ff890c" />
+            <TextArea fx:id="advisory_description" editable="false" layoutX="82.0" layoutY="116.0" prefHeight="58.0" prefWidth="291.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-border-radius: 5;" stylesheets="@../stylesheets/textarea-style.css" wrapText="true" />
+            <TextArea fx:id="advisory_challenge" editable="false" layoutX="82.0" layoutY="182.0" prefHeight="58.0" prefWidth="291.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-border-radius: 5;" stylesheets="@../stylesheets/textarea-style.css" wrapText="true" />
+            <TextArea fx:id="advisory_hint" editable="false" layoutX="82.0" layoutY="283.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-border-radius: 5;" stylesheets="@../stylesheets/textarea-style.css" wrapText="true" />
+            <TextArea fx:id="advisory_second_hint" editable="false" layoutX="82.0" layoutY="334.0" prefHeight="44.0" prefWidth="291.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-border-radius: 5;" stylesheets="@../stylesheets/textarea-style.css" wrapText="true" />
+            <Label layoutX="14.0" layoutY="423.0" text="Part of:" textFill="#ff890c" />
+            <TextField fx:id="advisory_vulnpart" editable="false" layoutX="82.0" layoutY="418.0" prefHeight="27.0" prefWidth="291.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Hyperlink fx:id="new_advisory_hyperlink" layoutX="159.0" layoutY="464.0" stylesheets="@../stylesheets/hyperlink-style.css" text="New" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="players_ap" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <Hyperlink fx:id="terminate_sessions_hyperlink" layoutX="14.0" layoutY="23.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Terminate all sessions" />
+            <Hyperlink fx:id="delete_all_players_hyperlink" layoutX="14.0" layoutY="69.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Delete all players" />
+            <TableView fx:id="players_tableview" layoutX="160.0" layoutY="23.0" onMouseClicked="#pickPlayer" prefHeight="410.0" prefWidth="616.0" stylesheets="@../stylesheets/tableview-style.css">
+              <columns>
+                <TableColumn fx:id="players_name" maxWidth="154.0" minWidth="154.0" prefWidth="154.0" text="Username" />
+                <TableColumn fx:id="players_team" maxWidth="154.0" minWidth="154.0" prefWidth="154.0" text="Teamname" />
+                  <TableColumn fx:id="players_password" maxWidth="154.0" minWidth="154.0" prefWidth="154.0" text="Password" />
+                  <TableColumn fx:id="players_active" maxWidth="154.0" minWidth="154.0" prefWidth="154.0" text="Status" />
+              </columns>
+            </TableView>
+            <Hyperlink fx:id="delete_selected_players_hyperlink" layoutX="14.0" layoutY="92.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Delete selected player" />
+            <Hyperlink fx:id="edit_players_hyperlink" layoutX="687.0" layoutY="461.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Edit" />
+            <Hyperlink fx:id="save_players_hyperlink" layoutX="743.0" layoutY="461.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Save" />
+            <Label layoutX="23.0" layoutY="464.0" text="Name" textFill="#ff890c" />
+            <Label layoutX="244.0" layoutY="464.0" text="Team" textFill="#ff890c" />
+            <Label layoutX="468.0" layoutY="464.0" text="Password" textFill="#ff890c" />
+            <TextField fx:id="players_edit_password_textfield" editable="false" layoutX="536.0" layoutY="459.0" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <TextField fx:id="players_edit_team_textfield" editable="false" layoutX="295.0" layoutY="459.0" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <TextField fx:id="players_edit_name_textfield" editable="false" layoutX="74.0" layoutY="459.0" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Hyperlink fx:id="terminate_players_session_hyperlink" layoutX="14.0" layoutY="46.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Terminate players session" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="answers_ap" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <TableView fx:id="answers_tableview" layoutX="170.0" layoutY="18.0" prefHeight="468.0" prefWidth="616.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="answers_username" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" text="Username" />
+                  <TableColumn fx:id="answers_advisoryid" maxWidth="104.0" minWidth="104.0" prefWidth="104.0" text="Advisory ID" />
+                  <TableColumn fx:id="answers_answer" maxWidth="254.0" minWidth="254.0" prefWidth="254.0" text="Answer" />
+                  <TableColumn fx:id="answers_correct" maxWidth="54.0" minWidth="54.0" prefWidth="54.0" text="Correct" />
+               </columns>
+            </TableView>
+            <Hyperlink fx:id="remove_all_answers_hyperlink" layoutX="14.0" layoutY="13.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Remove all answers" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="scores_ap" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <Hyperlink fx:id="reset_all_scores_hyperlink" layoutX="14.0" layoutY="13.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Reset all scores" />
+            <Hyperlink fx:id="delete_all_scores_hyperlink" layoutX="14.0" layoutY="36.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Delete all scores" />
+            <TableView fx:id="scores_tableview" layoutX="375.0" layoutY="16.0" onMouseClicked="#pickScores" prefHeight="427.0" prefWidth="400.0" stylesheets="@../stylesheets/tableview-style.css">
+               <columns>
+                  <TableColumn fx:id="scores_username" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Username" />
+                  <TableColumn fx:id="scores_prestige" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Prestige" />
+                  <TableColumn fx:id="scores_credit" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Credit" />
+               </columns>
+            </TableView>
+            <TextField fx:id="scores_prestige_textfield" editable="false" layoutX="160.0" layoutY="459.0" prefHeight="27.0" prefWidth="78.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Label fx:id="scores_username_label" layoutX="14.0" layoutY="464.0" textFill="#ff890c" />
+            <Label layoutX="178.0" layoutY="435.0" text="Prestige" textFill="#ff890c" />
+            <TextField fx:id="scores_credit_textfield" editable="false" layoutX="257.0" layoutY="458.0" prefHeight="27.0" prefWidth="78.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+            <Label layoutX="280.0" layoutY="435.0" text="Credit" textFill="#ff890c" />
+            <Hyperlink fx:id="scores_adjust_hyperlink" layoutX="344.0" layoutY="460.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Adjust" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="announcements_ap" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <Hyperlink fx:id="remove_all_announcements_hyperlink" layoutX="14.0" layoutY="13.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Remove all announcements" />
+            <Hyperlink fx:id="make_announcements_hyperlink" layoutX="665.0" layoutY="434.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Make announcement" />
+            <TextArea fx:id="announcements_textarea" layoutX="14.0" layoutY="404.0" prefHeight="82.0" prefWidth="637.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-border-radius: 5;" stylesheets="@../stylesheets/textarea-style.css" wrapText="true" />
+            <TextArea fx:id="old_announcements_textarea" editable="false" layoutX="14.0" layoutY="36.0" prefHeight="359.0" prefWidth="771.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-border-radius: 5;" stylesheets="@../stylesheets/textarea-style.css" wrapText="true" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="services_ap" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <Hyperlink fx:id="reset_all_services_hyperlink" layoutX="14.0" layoutY="13.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Reset all services" />
+            <Hyperlink fx:id="remove_all_services_hyperlink" layoutX="150.0" layoutY="13.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Delete all services" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="exploits_ap" layoutY="120.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3d4956;" visible="false">
+         <children>
+            <Hyperlink fx:id="remove_all_exploits_and_patches_hyperlink" layoutX="14.0" layoutY="13.0" stylesheets="@../stylesheets/hyperlink-style.css" text="Remove all exploits and patches" />
+         </children>
+      </AnchorPane>
+      <TextField fx:id="status_textfield" editable="false" layoutY="615.0" prefHeight="25.0" prefWidth="800.0" style="-fx-background-color: #3d4956; -fx-border-color: #ff890c; -fx-text-fill: #ff890c; -fx-border-radius: 5;" />
+   </children>
+</AnchorPane>

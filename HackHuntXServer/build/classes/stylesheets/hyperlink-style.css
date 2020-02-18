@@ -1,0 +1,8 @@
+.hyperlink {
+    -fx-text-fill:  #ff890c;
+    -fx-border-color: transparent;
+}
+
+.hyperlink:hover {
+    -fx-underline: true;    
+}
