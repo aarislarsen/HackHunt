@@ -1,0 +1,20 @@
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color:  #3d4956;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #3d4956;
+}
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+.text-area {
+    -fx-text-fill: #ff890c;
+}
