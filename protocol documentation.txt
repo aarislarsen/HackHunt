@@ -1,0 +1,216 @@
+Add user:
+-------------------------------
+Client#		addUser;;username;password;teamname
+Server#	ERROR: error description
+Server#	SUCCESS: success description
+
+Delete user:
+-------------------------------
+Client#		deleteUser;;username;password
+Server#	ERROR: error description
+Server#	SUCCESS: success description
+
+Login:
+--------------------------------
+Client#		login;;username;password
+Server#	ERROR: error description
+Server#	SUCCESS: token;success message
+
+Logout
+--------------------------------
+Client#		logout;token
+Server#	ERROR: error description
+Server#	SUCCESS: user was logged out
+
+Get active players
+--------------------------------
+Client#		getActivePlayers;token
+Server#	ERROR: error description
+Server#	SUCCESS: username,teamname;username,teamname
+
+Get player score:
+--------------------------------
+Client#		getScore;token
+Server#	ERROR: error description
+Server#	SUCCESS: username,prestige,credit
+
+Get team credit score
+--------------------------------
+Client#		getTeamCredits;token;teamname
+Server#	ERROR: error description
+Server#	SUCCESS: credits
+
+Get team prestige score
+--------------------------------
+Client#		getTeamPrestige;token;teamname
+Server#	ERROR: error description
+Server#	SUCCESS: prestige
+
+Get services for all teams
+--------------------------------
+Client#		getServices;token
+Server#	ERROR: error description
+Server#	SUCCESS: teamname,<fileservice>,<communicationservice>,<cryptoservice>,<webservice>,<storageservice>;teamname,<fileservice>,<communicationservice>,<cryptoservice>,<webservice>,<storageservice>
+
+Get announcements
+--------------------------------
+Client#		getAnnouncements;token
+Server#	ERROR: error description
+Server#	SUCCESS; timestamp,announcement;timestamp,announcement
+
+Get released advisories
+---------------------------------
+Client#		getReleasedAdvisories;token
+Server#	ERROR: error description
+Server#	SUCCESS: <base64 string of the advisory list of the form base64(advisorylist(base64(advisory(base64(advisoryfield)))))>
+
+Get answered advisories
+----------------------------------
+Client#		getAnsweredAdvisories;token
+Server#	ERROR: error description
+Server#	SUCCESS: advisoryID,timestamp;advisory,timestamp
+
+Answer advisory
+----------------------------------
+Client#		answerAdvisory;token;advisoryID,answer
+Server#	ERROR: error description
+Server#	SUCCESS: advisoryID
+Server#	FAILURE: advisoryID	
+
+Get exploit status
+------------------------------------
+Client#		getExploitStatus;token
+Server#	ERROR: error description
+Server#	SUCCESS: exploitID,numberanswered,numberrequired;numberanswered,numberrequired
+
+Generate exploit
+-------------------------------------
+Client#		generateExploit;token;vulnerability
+Server#	ERROR: error description
+Server#	SUCCESS: vulnerability
+
+Generate patch
+-------------------------------------
+Client#		generatePatch;token;vulnerability
+Server#	ERROR: error description
+Server#	SUCCESS: vulnerability
+
+Get vulnerable targets
+-------------------------------------
+Client#		getVulnerableTargets;token;vulnerability
+Server#	ERROR: error description
+Server#	SUCCESS: username;username;username
+
+Attack target
+-------------------------------------
+Client#		attackTarget;token;vulnerability;username
+Server#	ERROR: error description
+Server#	SUCCESS: user x was successfully exploited
+
+Get unanswered advisories
+--------------------------------------
+Client#		getUnansweredAdvisories;token
+Server#	ERROR: error description
+Server#	SUCCESS: <base64 string of the advisory list of the form base64(advisorylist(base64(advisory(base64(advisoryfield)))))>
+
+Get team rakings
+---------------------------------------
+Client#		getTeamRankings;token
+Server#	ERROR: error description
+Server#	SUCCESS: prestige,team;prestige,team;
+
+Get second hint
+---------------------------------------
+Client#		getSecondHint;token;id
+Server#	ERROR: error description
+Server#	SUCCESS:base64(second hint)
+
+Get team name
+---------------------------------------
+Client#		getTeamname;token
+Server#	ERROR: error description
+Server#	SUCCESS: teamname
+
+Get unpactched vulnerabilities
+----------------------------------------
+Client#		getUnpatchedVulns;token;teamname
+Server#	ERROR: error description
+Server#	SUCCESS: exploitID,exploitID,exploitID
+
+Get unpactched vulnerabilities for a given service
+----------------------------------------
+Client#		getUnpatchedVulnsForService;token;teamname;service
+Server#	ERROR: error description
+Server#	SUCCESS: exploitID,exploitID,exploitID
+
+Get vulnerable targets in a team
+-------------------------------------
+Client#		getVulnerableTargetsInTeam;token;vulnerability;teamname
+Server#	ERROR: error description
+Server#	SUCCESS: username;username;username
+
+Get exploits created by the user
+-------------------------------------
+Client#		isExploitAvailable;token;username;vulnerability
+Server#	ERROR: error description
+Server#	SUCCESS: true
+
+
+Game flow:
+----------------------------------------------------------------------------
+++	Server	: start server to allow players to register and login
+++	Server	: start timer to mark advisories as "released"
+++	Client -> Server: Create user
+++	Client -> Server: login, get session token
+++		Client -> Server: if the login fails because you are already logged in, reset the session and re-login
+++	Server	: setup services for player, or add player to existing teams services
+++	Client -> Server: Get active players every 5 seconds
+++	Client -> Server: Get released advisories every 5 seconds
+++	Client -> Server: Get current score for player every 1 second
+++	Client -> Server: Get current score for team every 5 seconds
+++	Client -> Server: Get services every 1 second
+++	Client -> Server: Get announcements every 5 seconds
+++	Client -> Server: Get ranking every 5 seconds
+++	Client -> Server: POST answer to advisory
+++		Server: add answer to Answers
+++		Client <- Server: return answer or detailed error
+++		Server: If first to answer, set "answered" and "answeredtime" in the database
+++		Server: add to prestige		
+++	Client -> Server: get second hint for advisory. This will cost 1 prestige
+++	Client -> Server: Get answered advisories every 1 second
+++	Client -> Server: Get unanswered advisories every 1 second
+++	Client -> Server: Get exploit status every 5 seconds
+++	Client -> Server: Generate exploit (should this cost you credits?)
+++		Server: add to exploits
+++		Server: Announce that exploit A has been found
+++		Server: Announce that patch A will be released in 30 minutes. If anyone creates the same exploit before the patch is released, they too can attack		
+++	Client -> Server: find vulnerable targets
+++	Client -> Server: POST attack user with exploit A
+++		Server: announce hack
+++		Server: add to credits 10
+++		Server: begin countdown until that victim can be attacked again (service is restarted)		
+++	Client -> Server: Generate patch
+++		Server: add to credits 10
+	
++	Server: reset all advisories to non-released (restart the game)
++	Server: remove all answers (restart the game)
++	Server: delete all players (reset the game)
++	Server: reset all scores and prestiges (restart the game)
++	Server: clear all active players (restart the game)
++	Server: clear particular player
++	Server: remove all rows in services (reset the game)
++	Server: remove all announcements (restart the game)
++   Server: reset services
++	Server: delete services
++	Server: delete vulnerabilities
+	
+	
+
+Next-step: 	
+		
+	test, play it, find bugs
+	
+	
+Known issues/won't-fix:	
+	new players added don't get the published patches
+		do it manually from the admin
